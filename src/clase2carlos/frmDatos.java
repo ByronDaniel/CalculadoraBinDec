@@ -257,23 +257,23 @@ public class frmDatos extends javax.swing.JFrame {
         int resultadoDigito = 0;
         int digito = 0;
         int elevado = 0;
-        String operacion = "";
+        String operacionString = "";
         String texto = "Binario: " + binario + "\n"; 
         for (int i=0; i < binario.length(); i++) {
-            digito = (int) Character.digit(binario.charAt(i), 10);
+            digito = Character.digit(binario.charAt(i), 10);
             elevado = (binario.length()-1)-i;
             resultadoDigito = (int) (digito*Math.pow((double)2, (double)elevado));
+            operacionString += resultadoDigito;
             resultado += resultadoDigito;
             texto += digito + " * 2^" + elevado + " = "  + resultadoDigito + "\n";
-            operacion += resultadoDigito;
             if(i == binario.length()-1){
-                 operacion += " = ";
+                 operacionString += " = ";
             }else{
-                operacion += " + ";
+                operacionString += " + ";
             }
         }
-        operacion+= resultado;
-        texto += operacion + "\n\nDecimal: " + resultado;
+        operacionString += resultado;
+        texto += operacionString + "\n\nDecimal: " + resultado;
         JOptionPane.showMessageDialog(rootPane, texto);
     }
     /**
