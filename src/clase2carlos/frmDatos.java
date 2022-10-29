@@ -253,15 +253,27 @@ public class frmDatos extends javax.swing.JFrame {
     }
     
     private void BinarioADecimal(String binario){
-        double resultado = 0;
-        double digito = 0;
-        double elevado = 0;
+        int resultado = 0;
+        int resultadoDigito = 0;
+        int digito = 0;
+        int elevado = 0;
+        String operacion = "";
+        String texto = "Binario: " + binario + "\n"; 
         for (int i=0; i < binario.length(); i++) {
-            digito = (double) Character.digit(binario.charAt(i), 10);
+            digito = (int) Character.digit(binario.charAt(i), 10);
             elevado = (binario.length()-1)-i;
-            resultado = resultado + (digito*Math.pow(2.0, elevado));
+            resultadoDigito = (int) (digito*Math.pow((double)2, (double)elevado));
+            resultado += resultadoDigito;
+            texto += digito + " * 2^" + elevado + " = "  + resultadoDigito + "\n";
+            operacion += resultadoDigito;
+            if(i == binario.length()-1){
+                 operacion += " = ";
+            }else{
+                operacion += " + ";
+            }
         }
-        String texto = "Binario: " + binario + " Resultado: " + resultado;
+        operacion+= resultado;
+        texto += operacion + "\n\nDecimal: " + resultado;
         JOptionPane.showMessageDialog(rootPane, texto);
     }
     /**
