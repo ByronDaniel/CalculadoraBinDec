@@ -236,17 +236,19 @@ public class frmDatos extends javax.swing.JFrame {
         int resultadoDivision = numero;
         int residuo = 0;
         String binarioInvertido = "";
-        String texto = "";
+        String texto = "Decimal: " + numero + "\n";
         do{
             residuo = resultadoDivision % 2;
+            texto += resultadoDivision + " / 2 = ";
             resultadoDivision = (int) resultadoDivision / 2;
+            texto += resultadoDivision + ", residuo: " + residuo + "\n";
             binarioInvertido += residuo;
-            texto += "";
-        }while(resultadoDivision != 0 && resultadoDivision != 1);
+            
+        }while(resultadoDivision != 1);
         binarioInvertido += "1";
-        StringBuilder builder=new StringBuilder(binarioInvertido);
-        String binario=builder.reverse().toString();
-        texto = "Decimal: " + numero + " Resultado: " + binario;
+        StringBuilder builder = new StringBuilder(binarioInvertido);
+        String binario = builder.reverse().toString();
+        texto += "\nBinario: " + binario;
         JOptionPane.showMessageDialog(rootPane, texto);
     }
     
